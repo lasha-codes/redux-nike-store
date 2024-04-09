@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import Clips from './utils/Clips'
+
 const Hero = ({
   heroapi: { title, subtitle, btntext, img, sociallinks, videos },
 }) => {
@@ -20,8 +22,12 @@ const Hero = ({
             >
               {btntext}
             </button>
-            {/* <div></div> */}
-            {/* <div></div> */}
+            <div className=''>
+              {videos.map((val, i) => (
+                <Clips key={i} imgsrc={val.imgsrc} clip={val.clip} />
+              ))}
+            </div>
+            <div></div>
           </div>
           <div>
             <img
@@ -37,3 +43,5 @@ const Hero = ({
 }
 
 export default Hero
+
+// stopLine - 23:03
