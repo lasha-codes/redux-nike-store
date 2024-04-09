@@ -10,10 +10,10 @@ import {
 const App = () => {
   return (
     <>
-      <main className='flex flex-col gap-16 relative'>
+      <main className='flex flex-col gap-16 relative pb-10'>
         <Hero heroapi={heroapi} />
         <Sales endpoint={popularsales} ifExists />
-        <FlexContent endpoint={highlight} />
+        <FlexContent endpoint={highlight} ifExists />
         <Sales endpoint={toprateslaes} />
         <FlexContent endpoint={sneaker} />
       </main>
