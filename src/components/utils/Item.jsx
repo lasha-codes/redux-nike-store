@@ -1,11 +1,28 @@
 /* eslint-disable react/prop-types */
-const Item = ({ color, shadow, title, text, img, btn, rating, price }) => {
+const Item = ({
+  ifExists,
+  id,
+  color,
+  shadow,
+  title,
+  text,
+  img,
+  btn,
+  rating,
+  price,
+}) => {
   return (
     <>
       <div
-        className={`relative bg-gradient-to-b ${color} ${shadow} grid items-center justify-items-center rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full hover:scale-105`}
+        className={`relative bg-gradient-to-b ${color} ${shadow} grid items-center rounded-xl py-4 px-5 transition-all duration-700 ease-in-out w-full hover:scale-105 ${
+          ifExists ? 'justify-items-start h-48' : 'justify-items-center'
+        }`}
       >
-        <div className='grid items-center justify-items-center'>
+        <div
+          className={`grid items-center ${
+            ifExists ? 'justify-items-start' : 'justify-items-center'
+          }`}
+        >
           <h1 className='text-slate-200 text-xl lg:text-lg md:text-base font-medium filter drop-shadow'>
             {title}
           </h1>
@@ -63,11 +80,17 @@ const Item = ({ color, shadow, title, text, img, btn, rating, price }) => {
             </button>
           </div>
         </div>
-        <div className='flex items-center'>
+        <div
+          className={`flex items-center  ${
+            ifExists ? 'absolute top-5 right-1' : 'justify-center'
+          }`}
+        >
           <img
             src={img}
-            alt='img/item-img'
-            className='h-36 w-64 transitions-theme hover:-rotate-12'
+            alt={`img/item-img${id}`}
+            className={`transitions-theme hover:-rotate-12 ${
+              ifExists ? 'h-auto w-64 md:w-56 -rotate-[35deg]' : 'h-36 w-64'
+            }`}
           />
         </div>
       </div>

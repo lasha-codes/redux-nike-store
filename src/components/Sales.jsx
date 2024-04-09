@@ -15,7 +15,7 @@ const Sales = ({ ifExists, endpoint: { title, items } }) => {
           }`}
         >
           {items?.map((item, i) => {
-            return <Item {...item} key={i} />
+            return <Item {...item} key={i} ifExists={ifExists} />
           })}
         </div>
       </div>
