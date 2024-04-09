@@ -8,13 +8,13 @@ const Clips = ({ clip, imgsrc }) => {
           alt='img/clips'
           className='inset-0 flex h-full w-full object-cover absolute top-0 left-0 right-0 rounded-xl opacity-100 z-10 transition-opacity duration-500'
         />
-        <div className='blur-effect-theme absolute top-11 left-11 lg:top-8 sm:top-4 sm:left-5 lg:left-9 right-0 opacity-100 z-[100] w-8 h-8 md:w-3 md:h-3 flex items-center justify-center rounded-full'>
+        <div className='blur-effect-theme absolute top-11 left-11 lg:top-8 sm:top-4 sm:left-5 lg:left-9 right-0 opacity-100 z-[100] w-8 h-8 md:w-3 md:h-3 flex items-center justify-center rounded-full group-hover:opacity-0 transition-all duration-200'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='slate'
             viewBox='0 0 24 24'
             strokeWidth={1.5}
-            className='icon-style md:w-3 md:h-3'
+            className='icon-style md:w-3 md:h-3 group-hover:opacity-0 transition-all duration-300'
           >
             <path
               strokeLinecap='round'
