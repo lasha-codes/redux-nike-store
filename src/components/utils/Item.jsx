@@ -34,7 +34,7 @@ const Item = ({
               <h1 className='text-black text-sm font-medium'>${price}</h1>
             </div>
             <div>
-              <h1 className='flex items-center'>
+              <div className='flex items-center'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   viewBox='0 0 24 24'
@@ -51,7 +51,7 @@ const Item = ({
                 <h1 className='md:text-sm font-normal text-slate-100'>
                   {rating}
                 </h1>
-              </h1>
+              </div>
             </div>
           </div>
           <div className='flex items-center gap-3'>
