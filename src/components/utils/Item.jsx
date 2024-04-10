@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import { useDispatch } from 'react-redux'
+import { setAddItemToCart } from '../../app/CartSlice'
 const Item = ({
   ifExists,
   id,
@@ -11,6 +13,13 @@ const Item = ({
   rating,
   price,
 }) => {
+  const dispatch = useDispatch()
+  const onAddToCart = () => {
+    const item = { id, title, text, img, color, shadow, rating, price }
+
+    dispatch(setAddItemToCart(item))
+  }
+
   return (
     <>
       <div
@@ -74,7 +83,8 @@ const Item = ({
             </button>
             <button
               type='button'
-              className='bg-white opacity-90 blur-effect-theme button-theme px-2 py-1 shadow-slate-200 text-sm text-black'
+              className='bg-white opacity-90 blur-effect-theme button-theme px-2 py-1 shadow-sky-200 text-sm text-black'
+              onClick={onAddToCart}
             >
               {btn}
             </button>
