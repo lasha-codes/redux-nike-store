@@ -1,9 +1,13 @@
-const CartCount = () => {
+/* eslint-disable react/prop-types */
+const CartCount = ({ onCartToggle }) => {
   return (
     <>
       <div className='bg-white h-11 flex items-center justify-between px-3 sticky top-0 left-0 right-0 w-full'>
         <div className='flex items-center gap-3'>
-          <div className='grid items-center cursor-pointer'>
+          <div
+            className='grid items-center cursor-pointer'
+            onClick={onCartToggle}
+          >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               fill='none'
