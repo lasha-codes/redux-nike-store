@@ -48,7 +48,9 @@ const CartItem = ({
             </div>
             <div className='flex items-center justify-around w-full'>
               <button
-                onClick={() => dispatch(setDecreaseItemQTY({ name: title }))}
+                onClick={() => {
+                  dispatch(setDecreaseItemQTY({ name: title }))
+                }}
                 type='button'
                 className='w-6 h-6 bg-theme-cart rounded text-white stroke-[2] lg:w-5 lg:h-5 active:scale-90 flex justify-center items-center'
               >
@@ -73,7 +75,9 @@ const CartItem = ({
               <button
                 type='button'
                 className='w-6 h-6 bg-theme-cart rounded text-white stroke-[2] lg:w-5 lg:h-5 active:scale-90 flex justify-center items-center'
-                onClick={() => dispatch(setIncreaseItemQTY({ name: title }))}
+                onClick={() => {
+                  dispatch(setIncreaseItemQTY({ name: title }))
+                }}
               >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'

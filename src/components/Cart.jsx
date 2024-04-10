@@ -4,12 +4,7 @@ import CartCount from './cart/CartCount'
 import CartEmpty from './cart/CartEmpty'
 import CartItem from './cart/CartItem'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  setCloseCart,
-  setClearCartItems,
-  calculateTotal,
-} from '../app/CartSlice'
-import { useEffect } from 'react'
+import { setCloseCart, setClearCartItems } from '../app/CartSlice'
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -24,10 +19,6 @@ const Cart = () => {
       })
     )
   }
-
-  useEffect(() => {
-    dispatch(calculateTotal())
-  }, [])
 
   return (
     <>
@@ -58,7 +49,7 @@ const Cart = () => {
           <div className='flex items-center justify-between'>
             <h1 className='text-base font-semibold uppercase'>SubTotal</h1>
             <h1 className='text-sm rounded bg-theme-cart text-slate-100 px-1 py-0.5'>
-              {subtotal / 2}
+              {subtotal}
             </h1>
           </div>
           <div className='grid items-center gap-2'>
