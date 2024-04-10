@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import CartCount from './cart/CartCount'
 import CartEmpty from './cart/CartEmpty'
 import CartItem from './cart/CartItem'
@@ -7,6 +8,7 @@ import { setCloseCart } from '../app/CartSlice'
 const Cart = () => {
   const dispatch = useDispatch()
   const ifCartState = useSelector((state) => state.cart.cartState)
+  const cartItems = useSelector((state) => state.cart.cartItems)
 
   const onCartToggle = () => {
     dispatch(
@@ -27,8 +29,18 @@ const Cart = () => {
       >
         <div className={`blue-effect-theme h-screen w-full absolute right-0`}>
           <CartCount onCartToggle={onCartToggle} />
-          <CartEmpty />
-          <CartItem />
+
+          {cartItems.length === 0 ? (
+            <CartEmpty />
+          ) : (
+            <div>
+              <div>
+                {cartItems?.map((item, i) => (
+                  <CartItem key={i} item={item}></CartItem>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>
