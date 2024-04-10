@@ -6,6 +6,7 @@ const initialState = {
   cartItems: localStorage.getItem('cart')
     ? JSON.parse(localStorage.getItem('cart'))
     : [],
+  subtotal: 0,
 }
 
 const CartSlice = createSlice({
@@ -52,10 +53,31 @@ const CartSlice = createSlice({
       })
       targetItem.cartQuantity += 1
       localStorage.setItem('cart', JSON.stringify(state.cartItems))
-      toast.success(`${name} Added to the cart`)
+      toast.success(`${name} QTY increased`)
     },
-    setDecreaseItemQTY: (state, action) => {},
-    setClearCartItems: (state, actions) => {},
+    setDecreaseItemQTY: (state, action) => {
+      const { name } = action.payload
+      console.log(name)
+      const targetItem = state.cartItems.find((item) => {
+        return item.title === name
+      })
+      console.log(targetItem)
+      if (targetItem.cartQuantity === 1) {
+        state.cartItems = state.cartItems.filter((item) => {
+          return name !== item.title
+        })
+        toast.success(`${name} removed from the cart`)
+      } else {
+        targetItem.cartQuantity -= 1
+        toast.success(`${name} QTY decreased`)
+      }
+      localStorage.setItem('cart', JSON.stringify(state.cartItems))
+    },
+    setClearCartItems: (state) => {
+      state.cartItems = []
+      localStorage.setItem('cart', JSON.stringify(state.cartItems))
+      toast.success('U have cleared the cart')
+    },
   },
 })
 
@@ -65,6 +87,8 @@ export const {
   setAddItemToCart,
   setRemoveItemFromCart,
   setIncreaseItemQTY,
+  setDecreaseItemQTY,
+  setClearCartItems,
 } = CartSlice.actions
 
 export default CartSlice.reducer
