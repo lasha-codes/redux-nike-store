@@ -15,6 +15,19 @@
     @apply w-11/12 m-auto;
   }
 
+  .cart-container::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+    height: 100%;
+    background-color: gray;
+  }
+
+  .cart-container::-webkit-scrollbar-thumb {
+    width: 10px;
+    background-color: rgb(234, 250, 161);
+    border-radius: 20px;
+  }
+
   /* Scroll */
   .scroll-hidden::-webkit-scrollbar {
     display: none;

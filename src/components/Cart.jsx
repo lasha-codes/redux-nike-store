@@ -33,8 +33,8 @@ const Cart = () => {
           {cartItems.length === 0 ? (
             <CartEmpty />
           ) : (
-            <div>
-              <div>
+            <div className='py-10'>
+              <div className='flex cart-container items-start justify-start flex-col gap-y-7 lg:gap-y-5 overflow-y-scroll h-[85vh] scroll-smooth'>
                 {cartItems?.map((item, i) => (
                   <CartItem key={i} item={item}></CartItem>
                 ))}

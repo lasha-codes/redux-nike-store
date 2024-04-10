@@ -23,7 +23,10 @@ const CartItem = ({
               <p className='text-sm text-slate-800 lg:text-xs'>{text}</p>
             </div>
             <div className='flex items-center justify-around w-full'>
-              <button type='button' className='bg-theme-cart rounded'>
+              <button
+                type='button'
+                className='w-6 h-6 bg-theme-cart rounded text-white stroke-[2] lg:w-5 lg:h-5 active:scale-90 flex justify-center items-center'
+              >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'
@@ -39,8 +42,13 @@ const CartItem = ({
                   />
                 </svg>
               </button>
-              <div>{cartQuantity}</div>
-              <button type='button'>
+              <div className='w-6 h-6 bg-theme-cart rounded text-white stroke-[2] lg:w-5 lg:h-5 flex text-xs justify-center items-center'>
+                {cartQuantity}
+              </div>
+              <button
+                type='button'
+                className='w-6 h-6 bg-theme-cart rounded text-white stroke-[2] lg:w-5 lg:h-5 active:scale-90 flex justify-center items-center'
+              >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'
@@ -59,19 +67,24 @@ const CartItem = ({
             </div>
           </div>
         </div>
-        <div>
-          <div>
-            <h1>{price * cartQuantity}</h1>
+        <div className='flex items-center gap-5'>
+          <div className='grid-items-center justify-center'>
+            <h1 className='text-lg lg:text-base text-slate-900 font-medium'>
+              ${price * cartQuantity}
+            </h1>
           </div>
-          <div>
-            <button type='button' className=''>
+          <di className='grid-items-center justify-center'>
+            <button
+              type='button'
+              className='w-6 h-6 bg-theme-cart rounded text-white stroke-[2] lg:w-5 lg:h-5 active:scale-90 flex justify-center items-center'
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
                 viewBox='0 0 24 24'
                 strokeWidth={1.5}
                 stroke='currentColor'
-                className='w-5 h-5'
+                className='w-4 h-4'
               >
                 <path
                   strokeLinecap='round'
@@ -80,7 +93,7 @@ const CartItem = ({
                 />
               </svg>
             </button>
-          </div>
+          </di>
         </div>
       </div>
     </>
