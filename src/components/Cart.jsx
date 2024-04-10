@@ -1,14 +1,21 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unknown-property */
 import CartCount from './cart/CartCount'
 import CartEmpty from './cart/CartEmpty'
 import CartItem from './cart/CartItem'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCloseCart } from '../app/CartSlice'
+import {
+  setCloseCart,
+  setClearCartItems,
+  calculateTotal,
+} from '../app/CartSlice'
+import { useEffect } from 'react'
 
 const Cart = () => {
   const dispatch = useDispatch()
   const ifCartState = useSelector((state) => state.cart.cartState)
   const cartItems = useSelector((state) => state.cart.cartItems)
+  const { subtotal } = useSelector((state) => state.cart)
 
   const onCartToggle = () => {
     dispatch(
@@ -17,6 +24,10 @@ const Cart = () => {
       })
     )
   }
+
+  useEffect(() => {
+    dispatch(calculateTotal())
+  }, [])
 
   return (
     <>
@@ -47,7 +58,7 @@ const Cart = () => {
           <div className='flex items-center justify-between'>
             <h1 className='text-base font-semibold uppercase'>SubTotal</h1>
             <h1 className='text-sm rounded bg-theme-cart text-slate-100 px-1 py-0.5'>
-              000
+              {subtotal / 2}
             </h1>
           </div>
           <div className='grid items-center gap-2'>
@@ -55,6 +66,7 @@ const Cart = () => {
               Taxes abd Shipping Will Calculate At Shipping
             </p>
             <button
+              onClick={() => dispatch(setClearCartItems())}
               type='button'
               className='button-theme bg-theme-cart text-white'
             >

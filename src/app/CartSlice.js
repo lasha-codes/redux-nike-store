@@ -74,9 +74,19 @@ const CartSlice = createSlice({
       localStorage.setItem('cart', JSON.stringify(state.cartItems))
     },
     setClearCartItems: (state) => {
-      state.cartItems = []
-      localStorage.setItem('cart', JSON.stringify(state.cartItems))
-      toast.success('U have cleared the cart')
+      if (state.cartItems.length < 1) {
+        toast.error('Cart is empty')
+      } else {
+        state.cartItems = []
+        localStorage.setItem('cart', JSON.stringify(state.cartItems))
+        toast.success('U have cleared the cart')
+      }
+    },
+    calculateTotal: (state) => {
+      state.cartItems.forEach((item) => {
+        state.subtotal += item.price * item.cartQuantity
+      })
+      console.log(state.subtotal)
     },
   },
 })
@@ -89,6 +99,7 @@ export const {
   setIncreaseItemQTY,
   setDecreaseItemQTY,
   setClearCartItems,
+  calculateTotal,
 } = CartSlice.actions
 
 export default CartSlice.reducer
