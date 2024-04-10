@@ -1,7 +1,27 @@
+import { useDispatch } from 'react-redux'
+import { setRemoveItemFromCart } from '../../app/CartSlice'
+
 const CartItem = ({
   // eslint-disable-next-line react/prop-types
   item: { id, title, text, img, color, shadow, price, cartQuantity },
 }) => {
+  const dispatch = useDispatch()
+
+  const onRemoveItem = () => {
+    dispatch(
+      setRemoveItemFromCart({
+        id,
+        title,
+        text,
+        img,
+        color,
+        shadow,
+        price,
+        cartQuantity,
+      })
+    )
+  }
+
   return (
     <>
       <div className='flex items-center justify-between w-full px-5'>
@@ -77,6 +97,7 @@ const CartItem = ({
             <button
               type='button'
               className='w-6 h-6 bg-theme-cart rounded text-white stroke-[2] lg:w-5 lg:h-5 active:scale-90 flex justify-center items-center'
+              onClick={onRemoveItem}
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
