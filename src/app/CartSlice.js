@@ -44,6 +44,18 @@ const CartSlice = createSlice({
 
       toast.success(`${action.payload.title} Removed from the cart`)
     },
+    setIncreaseItemQTY: (state, action) => {
+      const { name } = action.payload
+      console.log(name)
+      const targetItem = state.cartItems.find((item) => {
+        return item.title === name
+      })
+      targetItem.cartQuantity += 1
+      localStorage.setItem('cart', JSON.stringify(state.cartItems))
+      toast.success(`${name} Added to the cart`)
+    },
+    setDecreaseItemQTY: (state, action) => {},
+    setClearCartItems: (state, actions) => {},
   },
 })
 
@@ -52,6 +64,7 @@ export const {
   setCloseCart,
   setAddItemToCart,
   setRemoveItemFromCart,
+  setIncreaseItemQTY,
 } = CartSlice.actions
 
 export default CartSlice.reducer

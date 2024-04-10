@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { setRemoveItemFromCart } from '../../app/CartSlice'
+import { setRemoveItemFromCart, setIncreaseItemQTY } from '../../app/CartSlice'
 
 const CartItem = ({
   // eslint-disable-next-line react/prop-types
@@ -68,6 +68,7 @@ const CartItem = ({
               <button
                 type='button'
                 className='w-6 h-6 bg-theme-cart rounded text-white stroke-[2] lg:w-5 lg:h-5 active:scale-90 flex justify-center items-center'
+                onClick={() => dispatch(setIncreaseItemQTY({ name: title }))}
               >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -93,7 +94,7 @@ const CartItem = ({
               ${price * cartQuantity}
             </h1>
           </div>
-          <di className='grid-items-center justify-center'>
+          <div className='grid-items-center justify-center'>
             <button
               type='button'
               className='w-6 h-6 bg-theme-cart rounded text-white stroke-[2] lg:w-5 lg:h-5 active:scale-90 flex justify-center items-center'
@@ -114,7 +115,7 @@ const CartItem = ({
                 />
               </svg>
             </button>
-          </di>
+          </div>
         </div>
       </div>
     </>
